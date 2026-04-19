@@ -1,11 +1,130 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>CareerLaunch - Your Professional Development Journey</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <i class="fas fa-rocket"></i>
+            <span>CareerLaunch</span>
+        </div>
+        <div class="nav-links">
+            <a href="#">Dashboard</a>
+            <a href="#">Opportunities</a>
+            <a href="#">My Profile</a>
+            <a href="#">Analytics</a>
+            <% if (user) { %>
+                <span class="user-welcome">Welcome, <%= user.email %></span>
+                <a href="#" id="logoutBtn" class="btn-login">Logout →</a>
+            <% } else { %>
+                <a href="#" id="loginBtn" class="btn-login">Sign In →</a>
+            <% } %>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Your Career Journey Starts Here</h1>
+        <p>Discover personalized opportunities, track your growth, and land your dream role with AI-powered matching technology.</p>
+        <div class="hero-buttons">
+            <a href="#" class="btn-primary" id="getStartedBtn">
+                <i class="fas fa-arrow-right"></i> Get Started
+            </a>
+            <a href="#" class="btn-secondary">
+                <i class="fas fa-play"></i> Watch Demo
+            </a>
+        </div>
+        <div class="hero-stats">
+            <div class="stat">
+                <div class="stat-number">10,000+</div>
+                <div class="stat-label">Active Students</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Partner Companies</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">85%</div>
+                <div class="stat-label">Match Accuracy</div>
+            </div>
+        </div>
+    </div>
+    <div class="hero-image">
+        <img src="https://placehold.co/500x400/ffffff/667eea?text=Career+Growth+Illustration" alt="Career Growth" style="width: 100%; border-radius: 20px;">
+    </div>
+</section>
+
+<!-- Search Section -->
+<section class="search-section">
+    <div class="search-card">
+        <div class="search-input-group">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search opportunities, roles, or skills...">
+            </div>
+            <div class="filter-group">
+                <select id="typeFilter">
+                    <option value="all">All Types</option>
+                    <option value="internship">Internships</option>
+                    <option value="job">Jobs</option>
+                    <option value="workshop">Workshops</option>
+                    <option value="mentoring">Mentoring</option>
+                    <option value="event">Events</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <select id="locationFilter">
+                    <option value="all">All Locations</option>
+                    <option value="remote">Remote</option>
+                    <option value="onsite">On-site</option>
+                    <option value="hybrid">Hybrid</option>
+                </select>
+            </div>
+            <button class="search-btn" id="searchBtn">
+                <i class="fas fa-sliders-h"></i> Filter
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Opportunities Section -->
+<section class="opportunities-section">
+    <div class="section-header">
+        <h2><i class="fas fa-star"></i> Recommended for You</h2>
+        <div class="match-badge">
+            <i class="fas fa-chart-line"></i> Your Profile Match: <span id="profileMatch">--</span>%
+        </div>
+    </div>
+    <div id="opportunitiesGrid" class="opportunities-grid">
+        <!-- Cards will be injected here -->
+    </div>
+</section>
+
+<!-- Login Modal -->
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Sign In</h2>
+        <form id="loginForm">
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="#" id="showRegister">Register</a></p>
+    </div>
+</div>
+
+<script src="/js/main.js"></script>
+</body>
 </html>
